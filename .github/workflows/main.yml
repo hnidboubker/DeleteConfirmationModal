@@ -1,5 +1,8 @@
 name: "Deploy to Nuget"
-on:["push"]
+on:
+ push:
+ tags:
+   'v*'
 
 env:
 PROJECT_PATH: 'DeleteConfirmationModal.csproj'
