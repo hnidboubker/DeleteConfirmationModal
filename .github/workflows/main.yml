@@ -1,10 +1,14 @@
 name: "Deploy to Nuget"
-on:["push"]
+
+on:
+  push:
+    tags:
+    - 'v*'
 
 env:
 PROJECT_PATH: 'DeleteConfirmationModal.csproj'
 PACKAGE_OUTPUT_DIRECTORY: ${{github.workspace}}\output
-NUGET_SOURCE_URL: ''https://api.nh=uget.org/v3/index./json''
+NUGET_SOURCE_URL: ''https://api.nuget.org/v3/index./json''
 jobs:
   	depoly:
     name:'Deploy'
