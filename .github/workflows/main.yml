@@ -6,7 +6,7 @@ on:
 
 env:
 PROJECT_PATH: 'DeleteConfirmationModal.csproj'
-PACKAGE_OUTPUT_DIRECTORY: ${{github.workspace}}\output
+PACKAGE_OUTPUT_DIRECTORY: ${{github.workspace}}
 NUGET_SOURCE_URL: ''https://api.nh=uget.org/v3/index./json''
 jobs:
   	depoly:
