@@ -1,0 +1,40 @@
+﻿<!-- Views/Shared/_DeleteConfirmation.cshtml -->
+
+<!--begin::Delete Modal-->
+<div id="deleteConfirmationModal" class="modal fade" tabindex="-1" role="dialog">
+    <!--begin::Modal-Dialog-->
+    <div class="modal-dialog" role="document">
+        <!--begin::Modal Content-->
+        <div class="modal-content">
+            <!--begin::Modal Header-->
+            <div class="modal-header">
+                <!--begin:: Modal Title-->
+                <h5 class="modal-title">Confirmer la suppression</h5>  
+                <!--end:: Modal Title-->
+                <!--begin::Icon Close-->
+                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ki-duotone ki-cross fs-2">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                    </i>
+                </div>
+                <!--end::Icon Close-->
+            </div>
+            <!--end::Modal Header-->
+            <!--begin:: Modal Body-->
+            <div class="modal-body">
+                <p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+            </div>
+            <!--end:: Modal Body-->
+            <!--begin::Buttons Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton">Supprimer</button>
+            </div>
+            <!--end::Buttons Footer-->
+        </div>
+        <!--end::Modal Content-->
+    </div>
+    <!--begin::Modal-Dialog-->
+</div>
+<!--end::Delete Modal-->
