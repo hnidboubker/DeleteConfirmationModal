@@ -4,7 +4,7 @@ on: ["push"]
 env:
   PROJECT_PATH: 'DeleteConfirmationModal.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{github.workspace}}\output
-  FRAMEWORK: 'net48'  # Cible pour .NET Framework 4.8.1
+  NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
 
 jobs:
   deploy:
@@ -12,15 +12,15 @@ jobs:
     runs-on: 'windows-latest'
     steps:
     - name: 'Checkout'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v1
     - name: 'Install dotnet'
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v1
 
     - name: 'Restore packages'
       run: dotnet restore ${{env.PROJECT_PATH}}
 
     - name: 'Build project'
-      run: dotnet build --no-restore --configuration Release --framework ${{env.FRAMEWORK}}
+      run: dotnet build --no-restore --configuration Release
 
     - name: 'Pack project'
-      run: dotnet pack ${{env.PROJECT_PATH}} --no-restore --no-build --configuration Release --framework ${{env.FRAMEWORK}} --include-symbols --output ${{env.PACKAGE_OUTPUT_DIRECTORY}}
+      run: dotnet pack ${{env.PROJECT_PATH}} --no-restore --no-build --configuration Release --include-symbols --output ${{env.PACKAGE_OUTPUT_DIRECTORY}}
