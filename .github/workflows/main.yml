@@ -4,7 +4,6 @@ on: ["push"]
 env:
   PROJECT_PATH: 'DeleteConfirmationModal.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{github.workspace}}\output
-  NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
 
 jobs:
   deploy:
@@ -12,18 +11,12 @@ jobs:
     runs-on: 'windows-latest'
     steps:
     - name: 'Checkout'
-      uses: actions/checkout@v1
+      uses: actions/checkout@v3
     - name: 'Install dotnet'
-      uses: actions/setup-dotnet@v1
-
-    - name: 'Restore packages'
-      run: dotnet restore ${{env.PROJECT_PATH}}
+      uses: actions/setup-dotnet@v3
 
     - name: 'Build project'
       run: dotnet build --no-restore --configuration Release
 
     - name: 'Pack project'
       run: dotnet pack ${{env.PROJECT_PATH}} --no-restore --no-build --configuration Release --include-symbols --output ${{env.PACKAGE_OUTPUT_DIRECTORY}}
-
-    - name: 'Push package'
-      run: dotnet nuget push ${{env.PACKAGE_OUTPUT_DIRECTORY}}\*.nupkg -k ${{secrets.nuget_api_key}} -s ${{env.NUGET_SOURCE_URL}}
