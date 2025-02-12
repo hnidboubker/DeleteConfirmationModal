@@ -4,6 +4,7 @@ on: ["push"]
 env:
   PROJECT_PATH: 'DeleteConfirmationModal.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{github.workspace}}\output
+  FRAMEWORK: 'net48'  # Cible pour .NET Framework 4.8.1
 
 jobs:
   deploy:
@@ -16,7 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v3
 
     - name: 'Build project'
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build --no-restore --configuration Release --framework ${{env.FRAMEWORK}}
 
     - name: 'Pack project'
-      run: dotnet pack ${{env.PROJECT_PATH}} --no-restore --no-build --configuration Release --include-symbols --output ${{env.PACKAGE_OUTPUT_DIRECTORY}}
+      run: dotnet pack ${{env.PROJECT_PATH}} --no-restore --no-build --configuration Release --framework ${{env.FRAMEWORK}} --include-symbols --output ${{env.PACKAGE_OUTPUT_DIRECTORY}}
