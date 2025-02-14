@@ -25,6 +25,4 @@ jobs:
     - name: 'Pack project'
       run: dotnet pack ${{env.PROJECT_PATH}} --no-restore --no-build --configuration Release --include-symbols --output ${{env.PACKAGE_OUTPUT_DIRECTORY}}
     
-    - name: 'Run Install.ps1'
-      run: ./Install.ps1 -installPath ${{github.workspace}} -toolsPath <toolsPath> -package <package> -project <project>
-      shell: pwsh
+   
